@@ -17,6 +17,58 @@ mongoose.connection.on('connected', () => {
   console.log(`Connected to MongoDB ${mongoose.connection.name}.`);
 });
 
+const companySites = [
+  {
+    id: 1,
+    siteName: 'Baldwin Park',
+  },
+  {
+    id: 2,
+    siteName: 'Carpinteria',
+  },
+  {
+    id: 3, 
+    siteName: 'Boston',
+  }]
+
+
+  const eventCategories = [
+    {
+      id: 1,
+      eventName: 'slip and fall',
+    },
+    {
+      id: 2,
+      eventName: 'hazardous materials',
+    },
+    {
+      id: 3, 
+      eventName: 'improper weight dispersion',
+    },
+    {
+      id: 4,
+      eventName: 'PPE defective or missing',
+  }]
+
+  const corpDepartments = [
+    {
+      id: 1,
+      departmentName: 'Warehouse',
+    },
+    {
+      id: 2,
+      departmentName: 'Manufacturing',
+    },
+    {
+      id: 3, 
+      departmentName: 'HR',
+    },
+    {
+      id: 4,
+      departmentName: 'Customer Service',
+  }]
+
+
 app.use(express.urlencoded({ extended: false }));
 app.use(methodOverride('_method'));
 // app.use(morgan('dev'));
