@@ -4,20 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create Good Catch</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
 <body>
     <h1>Create Good Catch</h1>
-    <form action="/goodCatch" method="POST">
-        <label for="title">Title:</label>
-        <input type="text" id="title" name="title" required><br><br>
-        
+    <form method="POST" action="/goodCatch/create">
+        <label for="site">Site:</label>
+        <select id="site" name="site">
+            <% companySites.forEach(function(site) { %>
+                <option value="<%= site %>"><%= site %></option>
+            <% }); %>
+        </select>
+        <br>
+        <label for="department">Department:</label>
+        <select id="department" name="department">
+            <% corpDepartments.forEach(function(department) { %>
+                <option value="<%= department %>"><%= department %></option>
+            <% }); %>
+        </select>
+        <br>
+        <label for="event">Event Category:</label>
+        <select id="event" name="event">
+            <% eventCategories.forEach(function(category) { %>
+                <option value="<%= category %>"><%= category %></option>
+            <% }); %>
+        </select>
+        <br>
         <label for="description">Description:</label>
-        <textarea id="description" name="description" required></textarea><br><br>
-        
-        <label for="date">Date:</label>
-        <input type="date" id="date" name="date" required><br><br>
-        
-        <button type="submit">Submit</button>
+        <textarea id="description" name="description"></textarea>
+        <br>
+        <button type="submit">Create</button>
     </form>
 </body>
 </html>

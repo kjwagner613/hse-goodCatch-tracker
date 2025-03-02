@@ -1,6 +1,15 @@
 const express = require('express');
 const router = express.Router();
 const GoodCatch = require('../models/goodCatch');
+const { companySites, eventCategories, corpDepartments } = require('../constants');
+
+router.get('/createCatch', (req, res) => {
+    res.render('goodCatch/createCatch', {
+        companySites,
+        eventCategories,
+        corpDepartments
+    });
+});
 
 router.get('/readCatch', async (req, res) => {
     const thirtyDaysAgo = new Date();

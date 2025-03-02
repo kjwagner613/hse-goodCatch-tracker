@@ -9,7 +9,15 @@
 <body>
   <% if (user) { %>
     <h1>Welcome, <%= user.username %>!</h1>
+    <h2>Would you like to:</h2>
     <p>
+      <a href="/goodCatch/createCatch">Create a new good catch</a><br><br>
+      <a href="/goodCatch/update">Update a good catch</a><br><br>
+      <a href="/goodCatch/search">View good catches</a><br><br>
+      <a href="/goodCatch/delete">Delete a good catch</a><br><br>
+        
+or<br><br>
+
       <a href="/auth/sign-out">Sign out</a>
     </p>
   <% } else { %>

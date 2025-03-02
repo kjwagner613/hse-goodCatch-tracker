@@ -8,6 +8,8 @@ const morgan = require('morgan');
 const session = require('express-session');
 
 const authController = require('./controllers/auth.js');
+const goodCatchController = require('./controllers/goodCatch.js');
+const { companySites, eventCategories, corpDepartments } = require('./constants'); // Import constants
 
 const port = process.env.PORT ? process.env.PORT : '3000';
 
@@ -17,57 +19,7 @@ mongoose.connection.on('connected', () => {
   console.log(`Connected to MongoDB ${mongoose.connection.name}.`);
 });
 
-const companySites = [
-  {
-    id: 1,
-    siteName: 'Baldwin Park',
-  },
-  {
-    id: 2,
-    siteName: 'Carpinteria',
-  },
-  {
-    id: 3, 
-    siteName: 'Boston',
-  }]
-
-
-  const eventCategories = [
-    {
-      id: 1,
-      eventName: 'slip and fall',
-    },
-    {
-      id: 2,
-      eventName: 'hazardous materials',
-    },
-    {
-      id: 3, 
-      eventName: 'improper weight dispersion',
-    },
-    {
-      id: 4,
-      eventName: 'PPE defective or missing',
-  }]
-
-  const corpDepartments = [
-    {
-      id: 1,
-      departmentName: 'Warehouse',
-    },
-    {
-      id: 2,
-      departmentName: 'Manufacturing',
-    },
-    {
-      id: 3, 
-      departmentName: 'HR',
-    },
-    {
-      id: 4,
-      departmentName: 'Customer Service',
-  }]
-
+app.set('view engine', 'ejs');
 
 app.use(express.urlencoded({ extended: false }));
 app.use(methodOverride('_method'));
@@ -81,7 +33,7 @@ app.use(
 );
 
 app.get('/', (req, res) => {
-  res.render('index.ejs', {
+  res.render('index', {
     user: req.session.user,
   });
 });
@@ -95,6 +47,7 @@ app.get('/vip-lounge', (req, res) => {
 });
 
 app.use('/auth', authController);
+app.use('/goodCatch', goodCatchController);
 
 app.listen(port, () => {
   console.log(`The express app is ready on port ${port}!`);
