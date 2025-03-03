@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search for a Good Catch</title>
+</head>
+<body>
+  <h1>Search for a Good Catch</h1>
+
+  <form action="/goodCatch/search-results" method="GET">
+    <div>
+      <label for="startDate">Start Date:</label>
+      <input type="date" id="startDate" name="startDate">
+    </div>
+    <div>
+      <label for="endDate">End Date:</label>
+      <input type="date" id="endDate" name="endDate">
+    </div>
+    <div>
+      <label for="site">Site:</label>
+      <select id="site" name="site">
+        <option value="">All Sites</option>
+        <% companySites.forEach(site => { %>
+          <option value="<%= site %>"><%= site %></option>
+        <% }); %>
+      </select>
+    </div>
+    <div>
+      <label for="department">Department:</label>
+      <select id="department" name="department">
+        <option value="">All Departments</option>
+        <% corpDepartments.forEach(department => { %>
+          <option value="<%= department %>"><%= department %></option>
+        <% }); %>
+      </select>
+    </div>
+    <div>
+      <label for="creationUser">Created By:</label>
+      <input type="hidden" id="creationUser" name="creationUser" value="<%= defaultUserId %>">
+    </div>
+    <div>
+      <label for="category">Category:</label>
+      <select id="category" name="category">
+        <option value="">All Categories</option>
+        <% eventCategories.forEach(category => { %>
+          <option value="<%= category %>"><%= category %></option>
+        <% }); %>
+      </select>
+    </div>
+    <button type="submit">Search</button>
+  </form>
+</body>
+</html>

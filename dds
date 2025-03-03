@@ -1,0 +1,29 @@
+[33mcommit 8a6c69ce7d3f0c4de2fc68e3cbcad44d016144cb[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m
+Author: kev613 <kjwagner613@gmail.com>
+Date:   Sun Mar 2 23:26:17 2025 -0800
+
+    create route functioning, Heroku now functioning, mongo Db corrected
+
+[33mcommit 0243f4573cf5e902768bbdc5e7ca7f77671090d4[m
+Author: kev613 <kjwagner613@gmail.com>
+Date:   Sun Mar 2 20:41:04 2025 -0800
+
+    testing Heroku update
+
+[33mcommit 2621e177663746b9b7e1cd82a63ef8fcc58ffffd[m
+Author: kev613 <kjwagner613@gmail.com>
+Date:   Sat Mar 1 23:37:29 2025 -0800
+
+    Routes, schemas, forms built and drop down selecion operational
+
+[33mcommit 3cc131a53f9482ad4fdfa68c5d503ae0bcc12394[m
+Author: kev613 <kjwagner613@gmail.com>
+Date:   Sat Mar 1 22:07:40 2025 -0800
+
+    building routes and views
+
+[33mcommit 37b073db756d8bc74cac527843d27f4f53316a63[m
+Author: kev613 <kjwagner613@gmail.com>
+Date:   Wed Feb 26 13:02:22 2025 -0800
+
+    iniital commit

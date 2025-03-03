@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Good Catch</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+<body>
+    <h1>Update Good Catch</h1>
+    <form id="updateForm" method="POST" action="/goodCatch/update/<%= goodCatch._id %>">
+        <label for="site">Site:</label>
+        <input type="text" id="site" name="site" value="<%= goodCatch.site %>">
+        <br>
+        <label for="department">Department:</label>
+        <input type="text" id="department" name="department" value="<%= goodCatch.department %>">
+        <br>
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" value="<%= goodCatch.title %>">
+        <br>
+        <label for="description">Description:</label>
+        <textarea id="description" name="description"><%= goodCatch.description %></textarea>
+        <br>
+        <button type="submit">Update</button>
+    </form>
+</body>
+</html>

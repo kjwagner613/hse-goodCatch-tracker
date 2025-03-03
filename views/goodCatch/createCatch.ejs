@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create Good Catch</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+  <body>
+    <h1>Create Good Catch</h1>
+    <form method="POST" action="/goodCatch/create">
+      <label for="site">Site:</label>
+      <select id="site" name="site" required>
+        <option value="" disabled selected>Please select one</option>
+        <% companySites.forEach(function(site) { %>
+        <option value="<%= site %>"><%= site %></option>
+        <% }); %>
+      </select>
+      <br />
+
+      <label for="department">Department:</label>
+      <select id="department" name="department" required>
+        <option value="" disabled selected>Please select one</option>
+        <% corpDepartments.forEach(function(department) { %>
+        <option value="<%= department %>"><%= department %></option>
+        <% }); %>
+      </select>
+      <br />
+
+      <label for="event">Event Category:</label>
+      <select id="event" name="event" required>
+        <option value="" disabled selected>Please select one</option>
+        <% eventCategories.forEach(function(category) { %>
+        <option value="<%= category %>"><%= category %></option>
+        <% }); %>
+      </select>
+      <br />
+
+      <label for="description">Description:</label>
+      <textarea id="description" name="description" required></textarea>
+      <br />
+
+      <button type="submit">Create</button>
+    </form>
+    <% if (successMessage && successMessage.length > 0) { %>
+    <p style="color: green"><%= successMessage %></p>
+    <% } %>
+    <p>
+    You can create another record by entering it above <br />
+    or, you may return to the home screen by clicking 
+    <a href="/" class="button">here</a>.
+    </p>
+  </body>
+</html>

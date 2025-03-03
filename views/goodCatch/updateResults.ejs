@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Good Catch Results</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+<body>
+    <h1>Update Good Catch Results</h1>
+    <ul>
+        <% goodCatches.forEach(function(goodCatch) { %>
+            <li>
+                <a href="/goodCatch/updateForm/<%= goodCatch._id %>">
+                    <%= goodCatch.title %> - <%= goodCatch.description %> (Created by: <%= goodCatch.user %> on <%= goodCatch.creationDate.toDateString() %>)
+                </a>
+            </li>
+        <% }); %>
+    </ul>
+</body>
+</html>
