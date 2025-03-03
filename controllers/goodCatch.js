@@ -27,20 +27,7 @@ router.post('/create', async (req, res) => {
 
     try {
         await newGoodCatch.save();
-        res.redirect('/goodCatch/readCatch');
-    } catch (err) {
-        res.status(500).send(err.message);
-    }
-});
-
-// Read good catch records from the past 30 days
-router.get('/readCatch', async (req, res) => {
-    const thirtyDaysAgo = new Date();
-    thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
-
-    try {
-        const goodCatches = await GoodCatch.find({ 'events.creationDate': { $gte: thirtyDaysAgo } });
-        res.render('goodCatch/readCatch', { goodCatches });
+        res.redirect('/'); // Redirect to the home screen after creating a good catch
     } catch (err) {
         res.status(500).send(err.message);
     }
@@ -48,18 +35,20 @@ router.get('/readCatch', async (req, res) => {
 
 // Search good catch records
 router.get('/search', async (req, res) => {
-    const { user, site, area, department, date } = req.query;
+    const { startDate, endDate, user, site, department } = req.query;
     const query = {};
 
+    if (startDate) query['events.creationDate'] = { $gte: new Date(startDate) };
+    if (endDate) query['events.creationDate'] = { ...query['events.creationDate'], $lte: new Date(endDate) };
     if (user) query.user = user;
-    if (site) query.site = site;
-    if (area) query.area = area;
-    if (department) query.department = department;
-    if (date) query['events.creationDate'] = { $gte: new Date(date) };
+    if (site&& site !== '') query.site = site;
+    if (department && department !== '') query.department = department;
+    
+    console.log('Search query:', query);
 
     try {
         const goodCatches = await GoodCatch.find(query);
-        res.render('goodCatch/readCatch', { goodCatches });
+        res.render('goodCatch/readCatch', { goodCatches, companySites, eventCategories, corpDepartments });
     } catch (err) {
         res.status(500).send(err.message);
     }

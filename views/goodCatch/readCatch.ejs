@@ -1,36 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Read Good Catches</title>
-    <link rel="stylesheet" href="/stylesheets/style.css">
-</head>
-<body>
-    <h1>Read Good Catches</h1>
-    <form id="searchForm" method="GET" action="/goodCatch/search">
-        <label for="user">User:</label>
-        <input type="text" id="user" name="user">
-        <label for="site">Site:</label>
-        <input type="text" id="site" name="site">
-        <label for="area">Area:</label>
-        <input type="text" id="area" name="area">
-        <label for="department">Department:</label>
-        <input type="text" id="department" name="department">
-        <label for="date">Date:</label>
-        <input type="date" id="date" name="date">
-        <button type="submit">Search</button>
-    </form>
-    <button id="showRecentCatches">Click here to list all good catches created in the last 30 days</button>
-    <ul id="recentCatchesList" style="display: none;">
-        <% goodCatches.forEach(function(goodCatch) { %>
-            <li><%= goodCatch.title %> - <%= goodCatch.description %></li>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Good Catches</title>
+    <!-- <link rel="stylesheet" href="/stylesheets/style.css"> -->
+  </head>
+  <body>
+    <h1>Good Catches</h1>
+
+    <form method="GET" action="/goodCatch/search">
+      <label for="startDate">Start Date:</label>
+      <input type="date" id="startDate" name="startDate" />
+      <br />
+      <label for="endDate">End Date:</label>
+      <input type="date" id="endDate" name="endDate" />
+      <br />
+      <label for="user">Created By:</label>
+      <input type="text" id="user" name="user" />
+      <br />
+      <label for="site">Site:</label>
+      <select id="site" name="site">
+        <option value="">All</option>
+        <% companySites.forEach(function(site) { %>
+        <option value="<%= site %>"><%= site %></option>
         <% }); %>
+      </select>
+      <br />
+      <label for="department">Department:</label>
+      <select id="department" name="department">
+        <option value="">All</option>
+        <% corpDepartments.forEach(function(department) { %>
+        <option value="<%= department %>"><%= department %></option>
+        <% }); %>
+      </select>
+      <br />
+      <button type="submit">Search</button>
+      <br /><br />
+    </form>
+    <a href="/">Back to Home Page</a>
+    <% if (goodCatches.length > 0) { %>
+    <ul>
+      <% goodCatches.forEach(function(gc) { %>
+      <li>
+        <strong>Site:</strong> <%= gc.site %><br />
+        <strong>Department:</strong> <%= gc.department %><br />
+        <strong>Events:</strong>
+        <ul>
+          <% gc.events.forEach(function(event) { %>
+          <li>
+            <strong>Event:</strong> <%= event.event %><br />
+            <strong>Description:</strong> <%= event.description %><br />
+            <strong>Creation Date:</strong> <%= event.creationDate %>
+          </li>
+          <% }); %>
+        </ul>
+      </li>
+      <% }); %>
     </ul>
-    <script>
-        document.getElementById('showRecentCatches').addEventListener('click', function() {
-            document.getElementById('recentCatchesList').style.display = 'block';
-        });
-    </script>
-</body>
+    <% } else { %>
+    <p>No good catches found for the specified criteria.</p>
+    <% } %>
+  </body>
 </html>

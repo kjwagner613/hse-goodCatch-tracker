@@ -1,39 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Create Good Catch</title>
-    <link rel="stylesheet" href="/stylesheets/style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+  <body>
     <h1>Create Good Catch</h1>
     <form method="POST" action="/goodCatch/create">
-        <label for="site">Site:</label>
-        <select id="site" name="site">
-            <% companySites.forEach(function(site) { %>
-                <option value="<%= site %>"><%= site %></option>
-            <% }); %>
-        </select>
-        <br>
-        <label for="department">Department:</label>
-        <select id="department" name="department">
-            <% corpDepartments.forEach(function(department) { %>
-                <option value="<%= department %>"><%= department %></option>
-            <% }); %>
-        </select>
-        <br>
-        <label for="event">Event Category:</label>
-        <select id="event" name="event">
-            <% eventCategories.forEach(function(category) { %>
-                <option value="<%= category %>"><%= category %></option>
-            <% }); %>
-        </select>
-        <br>
-        <label for="description">Description:</label>
-        <textarea id="description" name="description"></textarea>
-        <br>
-        <button type="submit">Create</button>
+      <label for="site">Site:</label>
+      <select id="site" name="site">
+        <option value="" disabled selected>Please Select One</option>
+        <% companySites.forEach(function(site) { %>
+        <option value="<%= site %>"><%= site %></option>
+        <% }); %>
+      </select>
+      <br />
+      <label for="department">Department:</label>
+      <select id="department" name="department">
+        <option value="" disabled selected>Please Select One</option>
+        <% corpDepartments.forEach(function(department) { %>
+        <option value="<%= department %>"><%= department %></option>
+        <% }); %>
+      </select>
+      <br />
+      <label for="event">Event Category:</label>
+      <select id="event" name="event">
+        <option value="" disabled selected>Please Select One</option>
+        <% eventCategories.forEach(function(category) { %>
+        <option value="<%= category %>"><%= category %></option>
+        <% }); %>
+      </select>
+      <br />
+      <label for="description">Description:</label>
+      <textarea id="description" name="description"></textarea>
+      <br />
+      <button type="submit">Create</button>
     </form>
-</body>
+    <br />
+    <a href="/">Cancel and Return to Home Page</a>
+  </body>
 </html>
