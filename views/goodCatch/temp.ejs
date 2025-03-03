@@ -49,7 +49,7 @@
                                 <strong>Description:</strong> <%= event.description %><br />
                                 <strong>Creation Date:</strong> <%= event.creationDate %>
 
-                                <form onsubmit="handleDelete('<%= gc._id %>'); return false;" style="display:inline;">
+                                <form onsubmit="deleteRecord('<%= gc._id %>'); return false;" style="display:inline;">
                                     <button type="submit">Delete</button>
                                 </form>
                             </li>
@@ -62,16 +62,25 @@
         <p>No good catches found for the specified criteria.</p>
     <% } %>
 
-    <script src="/controllers/deleteCatch.js"></script>
     <script>
-        function handleDelete(id) {
-            deleteRecord(id, function(data) {
+        function deleteRecord(id) {
+            fetch(`/goodCatch/${id}`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
                 if (data.success) {
                     document.getElementById('message').innerText = data.message;
                     location.reload(); // Refresh the page to update the list of records
                 } else {
                     document.getElementById('message').innerText = 'An error occurred: ' + data.message;
                 }
+            })
+            .catch(error => {
+                document.getElementById('message').innerText = 'An error occurred: ' + error.message;
             });
         }
     </script>

@@ -29,7 +29,7 @@ const goodCatchSchema = new mongoose.Schema({
         enum: corpDepartments,
         required: true
     },
-    events: [eventSchema]
+    events: [eventSchema],
 });
 
 const GoodCatch = mongoose.model('GoodCatch', goodCatchSchema);
