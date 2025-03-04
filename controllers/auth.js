@@ -9,6 +9,7 @@ router.get('/sign-up', (req, res) => {
 });
 
 router.get('/sign-in', (req, res) => {
+  console.log("Sign-in route accessed"); // Debugging 
   res.render('auth/sign-in.ejs');
 });
 

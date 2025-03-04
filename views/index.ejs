@@ -3,10 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+  <!-- <link rel="icon" href="data:;base64,iVBORw0KGgo="> -->
+  <link rel="stylesheet" href="/styles.css">
   <title>Home Page</title>
 </head>
 <body>
+  <div class="background-image">  
+    <div class="text-content">  
   <% if (user) { %>
     <h1>Welcome, <%= user.username %>!</h1>
     <h2>Would you like to:</h2>
@@ -20,12 +23,15 @@
       <a href="/auth/sign-out">Sign out</a>
     </p>
   <% } else { %>
-    <h1>Welcome to the HSE Reporting Tool</h1>
-    <h2>Please sign in, or sign up, below.</h2>
-    <p>
+    <h1><em>Welcome to your<br><br>HSE Reporting Tool</h1><br><br>
+    <h2>Please <br><br>
+      <!-- sign in, or sign up, below.</h2> -->
+    <!-- <p> -->
       <a href="/auth/sign-up">Sign up</a> or
-      <a href="/auth/sign-in">Sign in</a>.
-    </p>
+      <a href="/auth/sign-in">Sign in</a>
+    <!-- </p> --></h2></div></div>
   <% } %>
 </body>
 </html>
+
+
