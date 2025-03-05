@@ -23,15 +23,24 @@
       <a href="/auth/sign-out">Sign out</a>
     </p>
   <% } else { %>
-    <h1><em>Welcome to your<br><br>HSE Reporting Tool</h1><br><br>
-    <h2>Please <br><br>
+    <h1><em>Welcome<br><br>HSE Reporting Tool</h1><br><br>
+    <h2>Please Select<br><br>
       <!-- sign in, or sign up, below.</h2> -->
     <!-- <p> -->
-      <a href="/auth/sign-up">Sign up</a> or
-      <a href="/auth/sign-in">Sign in</a>
+      <div class="auth-buttons"> 
+      <form action="/auth/sign-in">
+        <button type="submit">Sign In</button></form>
+      <p>Or</p>
+      <form action="/auth/sign-up">
+        <button type="submit">Sign Up</button>
+        </form></div>
+
     <!-- </p> --></h2></div></div>
   <% } %>
 </body>
 </html>
 
 
+
+  <a href="/auth/sign-up">Sign up</a> or
+      <a href="/auth/sign-in">Sign in</a>
