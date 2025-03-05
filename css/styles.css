@@ -22,7 +22,7 @@ html {
   background-image: url("/hse-vector.jpg");
   background-size: cover; /* This makes the image cover the entire screen */
   background-position: center; /* Centers the image */
-  height: 100vh; /* Full viewport height */
+  min-height: 100vh; /* Full viewport height */
   display: flex;
   color: white;
   justify-content: flex-start; /* Aligns content to the start of the flex container */
@@ -42,6 +42,40 @@ html {
   gap: 10px;
 }
 
+.button-container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 5px; /* Spacing between buttons */
+  background-color: rgb(31, 82, 109); /* Green button color */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.button-container form {
+  width: 45%; /* Adjust button width */
+  margin-bottom: 10px; /* Add spacing between rows */
+}
+.button-container button {
+  background-image: linear-gradient(
+    to bottom,
+    #397699,
+    #295679
+  ); /* Example gradient */
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Example shadow */
+}
+
+/* Media query for smaller screens */
+@media (max-width: 600px) {
+  .button-container form {
+    width: 90%; /* Make buttons full width on smaller screens */
+  }
+}
 .returnHome {
   display: inline-block;
   padding: 10px 20px;
@@ -63,7 +97,7 @@ button {
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 20px;
+  font-size: 18px;
   margin: 4px 2px;
   cursor: pointer;
   border-radius: 5px;
@@ -76,26 +110,37 @@ button:hover {
 
 /*Form container Style*/
 .form-container {
-  width: 25%; /* Take up 1/4 of the screen */
-  padding: 20px; /* Add some padding around the form */
-  background-color: #397699ff; /* Set the background color */
-  color: white; /* Set text to white */
-  /* margin: 10px; */
+  font-family: 'Open Sans', sans-serif; /* Example font */
+  background-color:rgb(43, 93, 122);  /* Light gray background */
+  border: 2px solid #ccc; /* Subtle border */
+  padding: 20px;
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Space between form elements */
+}
+
+
+.form-container h1 {
+  color: #1d2323; /* Dark gray text */
+  text-align: center;
+  margin-bottom: 20px;
+  
 }
 
 /* HSE Graphic Container Styling */
-.hse-graphic-container {
+/* .hse-graphic-container {
   width: 75%; /* Take up 3/4 of the screen */
-  padding: 20px;
-}
-
+/* padding: 20px; */
+/* } */
+/* 
 .hse-graphic-container img {
   max-width: 100%; /* Make the image responsive */
-  height: auto;
-  display: block; /* Remove extra space below image */
-}
-
-form {
+/* height: auto; */
+/* display: block; Remove extra space below image */
+/* } */
+*/ */ form {
   display: grid;
   grid-template-columns: 1fr 1fr; /* Two equal width columns */
   grid-template-rows: repeat(
@@ -163,9 +208,4 @@ select option {
 
 .hse-graphic-container {
   flex: 0 0 75%; /* Do not grow, do not shrink, 75% width */
-}
-
-.successMessage {
-  color: #FBFF01;
-  font-size: .025vh;
 }

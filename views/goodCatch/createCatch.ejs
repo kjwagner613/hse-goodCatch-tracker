@@ -19,7 +19,6 @@
             <% }); %>
           </select>
           <br />
-
           <label for="department">Department:</label>
           <select id="department" name="department" required>
             <option value="" disabled selected>Please select one</option>
@@ -28,7 +27,6 @@
             <% }); %>
           </select>
           <br />
-
           <label for="event">Event Category:</label>
           <select id="event" name="event" required>
             <option value="" disabled selected>Please select one</option>
@@ -37,16 +35,15 @@
             <% }); %>
           </select>
           <br />
-
           <label for="description">Description:</label>
           <textarea id="description" name="description" required></textarea>
           <br />
-
           <button type="submit">Create</button>
         </form>
         <% if (successMessage && successMessage.length > 0) { %>
-        <p style="color: #fbff01"><%= successMessage %></p>
+        <p style="color: #fbff01; font-size: 1.5em; text-align: center; margin: 10px;"><%= successMessage %></p>
         <% } %>
-        <p><a href="/" class="button">return to home screen</a>.</p>
+        <form action="/">
+          <button type="submit">Return to Home Screen</button></form>
   </body>
 </html>

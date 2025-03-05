@@ -31,14 +31,7 @@ router.get("/createCatch", (req, res) => {
     successMessage: "",
   });
 });
-router.get("/createCatch-old", (req, res) => {
-  res.render("goodCatch/createCatch-old", {
-    companySites,
-    eventCategories,
-    corpDepartments,
-    successMessage: "",
-  });
-});
+
 
 router.post("/create", async (req, res) => {
   try {
@@ -76,7 +69,7 @@ router.get("/updateCatch", async (req, res) => {
 router.get("/search", async (req, res) => {
   try {
     const results = await GoodCatch.find({}).populate("creationUser"); // ✅ Fetch all records
-    res.render("goodCatch/readCatch", { goodCatches: results });
+    res.render("goodCatch/updateSearch", { goodCatches: results });
   } catch (err) {
     res.status(500).send(err.message);
   }

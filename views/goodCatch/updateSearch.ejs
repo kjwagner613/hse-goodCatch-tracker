@@ -4,23 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/styles.css">
-    <title>Update Good Catch</title>
+    <title>Search Record to Update</title>
 </head>
 <body>
     <div class="background-image">
         <div class="form-container">
-            <h1>Update Good Catch</h1>
-            <form method="POST" action="/goodCatch/update/<%= goodCatch._id %>">
+            <h1>Find a Good Catch to Update</h1>
+            <form method="GET" action="/goodCatch/updateResults">
                 <label for="site">Site:</label>
-                <input type="text" id="site" name="site" value="<%= goodCatch.site %>" required>
+                <input type="text" id="site" name="site">
                 
                 <label for="department">Department:</label>
-                <input type="text" id="department" name="department" value="<%= goodCatch.department %>" required>
+                <input type="text" id="department" name="department">
                 
-                <label for="description">Description:</label>
-                <textarea id="description" name="description" required><%= goodCatch.events[0].description %></textarea>
+                <label for="event">Event Category:</label>
+                <input type="text" id="event" name="event">
                 
-                <button type="submit">Update</button>
+                <label for="createdBy">Created By:</label>
+                <input type="text" id="createdBy" name="createdBy">
+                
+                <button type="submit">Search</button>
             </form>
             <form action="/">
                 <button type="submit" class="returnHome">Return to Home</button>

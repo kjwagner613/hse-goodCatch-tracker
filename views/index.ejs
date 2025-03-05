@@ -9,24 +9,30 @@
 </head>
 <body>
   <div class="background-image">  
-    <div class="text-content">  
+    <div class="form-container">  
   <% if (user) { %>
     <h1>Welcome, <%= user.username %>!</h1>
-    <h2>Would you like to:</h2>
-    <p>
-      <a href="/goodCatch/createCatch">Create a new good catch</a><br><br>
-      <a href="/goodCatch/updateCatch">Update a good catch</a><br><br>
-      <a href="/goodCatch/search">Search for a good catch</a><br><br> 
-      <a href="/goodCatch/delete">Delete a good catch</a><br><br> 
-      <!-- <button type="submit">Delete</button> -->
-      </form><br><br>
+    <h2>Would you like to do:</h2>
+    <p><br>
+      <div class="button-container">
+        <form action="/goodCatch/createCatch">
+          <button type="submit">Create</button>
+        </form>
+        <form action="/goodCatch/updateCatch">
+          <button type="submit">Update</button>
+        </form>
+        <form action="/goodCatch/search">
+          <button type="submit">Search</button>
+        </form>
+        <form action="/goodCatch/delete">
+          <button type="submit">Delete</button>
+        </form>
+      </div>
       <a href="/auth/sign-out">Sign out</a>
     </p>
   <% } else { %>
     <h1><em>Welcome<br><br>HSE Reporting Tool</h1><br><br>
     <h2>Please Select<br><br>
-      <!-- sign in, or sign up, below.</h2> -->
-    <!-- <p> -->
       <div class="auth-buttons"> 
       <form action="/auth/sign-in">
         <button type="submit">Sign In</button></form>
@@ -39,8 +45,3 @@
   <% } %>
 </body>
 </html>
-
-
-
-  <a href="/auth/sign-up">Sign up</a> or
-      <a href="/auth/sign-in">Sign in</a>

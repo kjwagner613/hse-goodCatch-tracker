@@ -3,19 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Update Good Catch Results</title>
     <link rel="stylesheet" href="/styles.css">
+    <title>Update Good Catch</title>
 </head>
 <body>
-    <h1>Update Good Catch Results</h1>
-    <ul>
-        <% goodCatches.forEach(function(goodCatch) { %>
-            <li>
-                <a href="/goodCatch/updateForm/<%= goodCatch._id %>">
-                    <%= goodCatch.title %> - <%= goodCatch.description %> (Created by: <%= goodCatch.user %> on <%= goodCatch.creationDate.toDateString() %>)
-                </a>
-            </li>
-        <% }); %>
-    </ul>
+    <div class="background-image">
+        <div class="form-container">
+            <h1>Search Results</h1>
+            <% if (goodCatches.length > 0) { %>
+                <ul>
+                    <% goodCatches.forEach(function(gc) { %>
+                        <li>
+                            <strong>Site:</strong> <%= gc.site %> <br />
+                            <strong>Department:</strong> <%= gc.department %> <br />
+                            <a href="/goodCatch/updateForm/<%= gc._id %>">
+                                <button>Update</button>
+                            </a>
+                        </li>
+                    <% }); %>
+                </ul>
+            <% } else { %>
+                <p>No records found.</p>
+            <% } %>
+            <form action="/">
+                <button type="submit" class="returnHome">Return to Home</button>
+            </form>
+        </div>
+    </div>
 </body>
 </html>
