@@ -1,21 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/styles.css">
-
-    <title>Update Good Catch</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/styles.css">
+  <title>Update Good Catch</title>
 </head>
 <body>
-  
-    <div class="background-image">
+  <div class="background-image">
     <div class="form-container">
-        <h1>Update a Good Catch</h1>
-    <form method="GET" action="/goodCatch/updateSearch">
-        <label for="recordId">Enter Record ID to Update:</label>
-        <input type="text" id="recordId" name="recordId" required>
-        <button type="submit">Find Record</button>
-    </form>
+      <h1>Update a Good Catch</h1>
+      <form method="POST" action="/goodCatch/updateCatch/<%= goodCatch._id %>?_method=PUT">
+        <label for="site">Site:</label>
+        <input type="text" id="site" name="site" value="<%= goodCatch.site %>" required />
+        
+        <label for="department">Department:</label>
+        <input type="text" id="department" name="department" value="<%= goodCatch.department %>" required />
+        
+        <label for="event">Event Category:</label>
+        <input type="text" id="event" name="event" value="<%= goodCatch.events[0].event %>" required />
+
+        <label for="description">Description:</label>
+        <textarea id="description" name="description" required><%= goodCatch.events[0].description %></textarea>
+        
+        <button type="submit">Update</button>
+      </form>
+    </div>
+  </div>
 </body>
 </html>

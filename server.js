@@ -40,7 +40,6 @@ app.use((req, res, next) => {
   next();
 });
 
-
 app.use(express.urlencoded({ extended: false }));
 app.use(methodOverride("_method"));
 app.use(morgan('dev'));
@@ -52,6 +51,10 @@ app.use(
     saveUninitialized: true,
   })
 );
+
+app.locals.companySites = companySites;
+app.locals.eventCategories = eventCategories;
+app.locals.corpDepartments = corpDepartments;
 
 app.get("/", (req, res) => {
   res.render("index", {

@@ -1,45 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Read Good Catches</title>
-    <link rel="stylesheet" href="/styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/styles.css">
+  <title>Search Results</title>
 </head>
 <body>
-    <h1>Read Good Catches</h1>
-    <form id="resultsForm" method="GET" action="/goodCatch/search">
-        <label for="user">User:</label>
-        <input type="text" id="user" name="user">
-        <label for="site">Site:</label>
-        <input type="text" id="site" name="site">
-        <label for="area">Area:</label>
-        <input type="text" id="area" name="area">
-        <label for="department">Department:</label>
-        <input type="text" id="department" name="department">
-        <label for="date">Date:</label>
-        <input type="date" id="date" name="date">
-        <button type="submit">Search</button>
-    </form>
-    <button id="showRecentCatches">Click here to list all good catches created in the last 30 days</button>
-    <ul id="recentCatchesList" style="display: none;">
-        <% goodCatches.forEach(function(goodCatch) { %>
-            <li><%= goodCatch.title %> - <%= goodCatch.description %></li>
-        <% }); %>
-    </ul>
-    <ul id="searchResultsList">
-        <% if (searchResults && searchResults.length > 0) { %>
-            <% searchResults.forEach(function(result) { %>
-                <li><%= result.title %> - <%= result.description %></li>
-            <% }); %>
-        <% } else { %>
-            <li>No results found</li>
-        <% } %>
-    </ul>
-    <script>
-        document.getElementById('showRecentCatches').addEventListener('click', function() {
-            document.getElementById('recentCatchesList').style.display = 'block';
-        });
-    </script>
+  <div class="background-image">
+    <div class="form-container">
+      <h1>Search Results</h1>
+      <% if (goodCatches.length > 0) { %>
+        <ul>
+          <% goodCatches.forEach(function(gc) { %>
+            <li>
+              <strong>Site:</strong> <%= gc.site %> <br />
+              <strong>Department:</strong> <%= gc.department %> <br />
+              <% gc.events.forEach(function(event) { %>
+                <strong>Event:</strong> <%= event.event %> <br />
+                <strong>Description:</strong> <%= event.description %> <br />
+              <% }); %>
+            </li>
+          <% }); %>
+        </ul>
+      <% } else { %>
+        <p>No good catches found.</p>
+      <% } %>
+      <form action="/">
+        <button type="submit" class="returnHome">Return to Home</button>
+      </form>
+    </div>
+  </div>
 </body>
+</html>
 </html>

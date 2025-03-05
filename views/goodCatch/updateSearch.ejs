@@ -1,34 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/styles.css">
-    <title>Search Record to Update</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/styles.css">
+  <title>Find and Update Good Catch</title>
 </head>
 <body>
-    <div class="background-image">
-        <div class="form-container">
-            <h1>Find a Good Catch to Update</h1>
-            <form method="GET" action="/goodCatch/updateResults">
-                <label for="site">Site:</label>
-                <input type="text" id="site" name="site">
-                
-                <label for="department">Department:</label>
-                <input type="text" id="department" name="department">
-                
-                <label for="event">Event Category:</label>
-                <input type="text" id="event" name="event">
-                
-                <label for="createdBy">Created By:</label>
-                <input type="text" id="createdBy" name="createdBy">
-                
-                <button type="submit">Search</button>
-            </form>
-            <form action="/">
-                <button type="submit" class="returnHome">Return to Home</button>
-            </form>
-        </div>
+  <div class="background-image">
+    <div class="form-container">
+      <h1>Find Record to Update</h1>
+      <form method="GET" action="/goodCatch/updateCatch/<%= recordId %>">
+        <label for="recordId">Enter Record ID to Update:</label>
+        <input type="text" id="recordId" name="recordId" required>
+        <button type="submit">Find Record</button>
+      </form>
     </div>
+  </div>
 </body>
 </html>
