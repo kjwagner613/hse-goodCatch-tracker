@@ -31,6 +31,14 @@ router.get("/createCatch", (req, res) => {
     successMessage: "",
   });
 });
+router.get("/createCatch-old", (req, res) => {
+  res.render("goodCatch/createCatch-old", {
+    companySites,
+    eventCategories,
+    corpDepartments,
+    successMessage: "",
+  });
+});
 
 router.post("/create", async (req, res) => {
   try {

@@ -6,6 +6,12 @@
   color: white;
 }
 
+h1 {
+  text-align: center;
+  margin-top: 8vh;
+  margin-bottom: 15vh;
+}
+
 body,
 html {
   height: 100%;
@@ -23,12 +29,13 @@ html {
   align-items: flex-start; /* Aligns content to the start of the flex container */
 }
 
-.text-content {
+/* .text-content {
   margin-top: 33vh; /* Starts the text about 1/3 of the way down */
-  margin-left: 4vw; /* Adjusts the text to the left third of the screen */
-  color: white; /* Changes the text color for better visibility, change if needed */
-  font-family: Arial, sans-serif; /* Example font family */
-}
+/* margin-left: 4vw; Adjusts the text to the left third of the screen */
+/* color: white; Changes the text color for better visibility, change if needed */
+
+/* font-family: Arial, sans-serif; Example font family */
+/* } */
 
 .auth-buttons {
   display: flex;
@@ -56,7 +63,7 @@ button {
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px;
+  font-size: 20px;
   margin: 4px 2px;
   cursor: pointer;
   border-radius: 5px;
@@ -73,6 +80,7 @@ button:hover {
   padding: 20px; /* Add some padding around the form */
   background-color: #397699ff; /* Set the background color */
   color: white; /* Set text to white */
+  /* margin: 10px; */
 }
 
 /* HSE Graphic Container Styling */
@@ -89,9 +97,13 @@ button:hover {
 
 form {
   display: grid;
-  grid-template-columns: auto 1fr; /* Label width, Input width */
-  grid-gap: 10px; /* Spacing between rows and columns */
-  max-width: 100%; /* Make sure it doesn't overflow the container */
+  grid-template-columns: 1fr 1fr; /* Two equal width columns */
+  grid-template-rows: repeat(
+    4,
+    auto
+  ); /* 4 auto-sized rows for labels and fields */
+  grid-gap: 10px;
+  align-items: center; /* Vertically center items within the rows */
 }
 
 .form-group {
@@ -99,6 +111,7 @@ form {
 }
 
 label {
+  grid-column: 1;
   color: white; /*Ensures label is white*/
   text-align: right; /* Align labels to the right */
   padding-right: 10px; /* Add some space between label and input */
@@ -120,6 +133,18 @@ textarea {
   resize: vertical; /* Allow vertical resizing of the textarea */
 }
 
+select {
+  color: black;
+}
+
+select::-ms-expand {
+  color: black;
+}
+
+select option {
+  color: black;
+}
+
 /* Clearfix (important for containing floats) */
 .background-image::after {
   content: "";
@@ -138,4 +163,9 @@ textarea {
 
 .hse-graphic-container {
   flex: 0 0 75%; /* Do not grow, do not shrink, 75% width */
+}
+
+.successMessage {
+  color: #FBFF01;
+  font-size: .025vh;
 }
