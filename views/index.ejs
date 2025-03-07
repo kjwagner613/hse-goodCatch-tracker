@@ -15,28 +15,25 @@
     <h2>Would you like to do:</h2>
     <p><br>
       <div class="button-container">
-        <form action="/goodCatch/createCatch">
+        <form action="/goodCatch">
           <button type="submit">Create</button>
-        </form>
-        <form action="/goodCatch/updateCatch">
-          <button type="submit">Update</button>
-        </form>
-        <form action="/goodCatch/search">
-          <button type="submit">Search</button>
         </form>
         <form action="/goodCatch/delete">
           <button type="submit">Delete</button>
+        </form>
+        <form action="/goodCatch/search">
+          <button type="submit">Search/Update</button>
         </form>
       </div>
       <a href="/auth/sign-out">Sign out</a>
     </p>
   <% } else { %>
-    <h1><em>Welcome<br><br>HSE Reporting Tool</h1><br><br>
+    <h1><em>HSE Reporting Tool<br><br>Welcome</h1><br><br>
     <h2>Please Select<br><br>
       <div class="auth-buttons"> 
       <form action="/auth/sign-in">
         <button type="submit">Sign In</button></form>
-      <p>Or</p>
+      <!-- <p>Or</p> -->
       <form action="/auth/sign-up">
         <button type="submit">Sign Up</button>
         </form></div>

@@ -5,7 +5,14 @@ const bcrypt = require("bcrypt");
 const User = require("../models/user.js");
 
 router.get("/sign-up", (req, res) => {
-  res.render("auth/sign-up.ejs");
+  try {
+    res.render("auth/sign-up.ejs", { user: req.session.user }); // Pass user object to view
+  } catch (error) {
+    console.error("Error rendering sign-up view:", error);
+    res
+      .status(500)
+      .send("An error occurred while displaying the sign-up form.");
+  }
 });
 
 router.get("/sign-in", (req, res) => {
@@ -14,7 +21,7 @@ router.get("/sign-in", (req, res) => {
 
 router.get("/sign-out", (req, res) => {
   req.session.destroy();
-  res.redirect("/");
+  res.redirect("/sign-in");
 });
 
 router.post("/sign-up", async (req, res) => {
@@ -38,10 +45,10 @@ router.post("/sign-up", async (req, res) => {
     // All ready to create the new user!
     await User.create(req.body);
 
-    res.redirect("/auth/sign-in");
+    res.redirect("/");
   } catch (error) {
     console.log(error);
-    res.redirect("/");
+    res.redirect("/sign-in");
   }
 });
 
@@ -73,7 +80,7 @@ router.post("/sign-in", async (req, res) => {
     res.redirect("/");
   } catch (error) {
     console.log(error);
-    res.redirect("/");
+    res.redirect("/sign-in");
   }
 });
 

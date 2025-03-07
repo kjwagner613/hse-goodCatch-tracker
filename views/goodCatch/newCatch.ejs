@@ -10,7 +10,8 @@
     <div class="background-image">
       <div class="form-container">
         <h1>Create Good Catch</h1>
-        <form method="POST" action="/goodCatch/create">
+        <form method="POST" action="/users/<%= user._id %>/catches">
+
           <label for="site">Site:</label>
           <select id="site" name="site" required>
             <option value="" disabled selected>Please select one</option>
@@ -43,7 +44,6 @@
         <% if (successMessage && successMessage.length > 0) { %>
         <p style="color: #fbff01; font-size: 1.5em; text-align: center; margin: 10px;"><%= successMessage %></p>
         <% } %>
-        <form action="/">
-          <button type="submit">Return to Home Screen</button></form>
+
   </body>
 </html>

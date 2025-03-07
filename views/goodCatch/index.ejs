@@ -1,0 +1,12 @@
+<h1>Welcome, <%= user.username %>!</h1>
+<p>You have submitted <%= totalCount %> good catches.</p>
+
+<% for (const category in categoryCounts) { %>
+  <p><%= categoryCounts[category] %> <%= category %></p>
+<% } %>
+
+<h2>What would you like to do today?</h2>
+<ul>
+  <li><a href="/users/<%= user._id %>/catches/new">Create</a></li>
+  <li><a href="/users/<%= user._id %>/catches/search">View</a></li>
+  <li><a href="/users/<%= user._id %>/catches/delete">Delete</a></li> </ul>

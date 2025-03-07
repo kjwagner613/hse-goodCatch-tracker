@@ -14,7 +14,9 @@
         <label for="recordId">Enter Record ID to Delete:</label>
         <input type="text" id="recordId" name="recordId" required />
         <button type="submit">Delete</button>
-      </form>
+        <form action=/users/<%= user._id %>/catches">
+          <button type="submit">Personal Dashboard</button>
+        </form>
     </div>
   </div>
 </body>
