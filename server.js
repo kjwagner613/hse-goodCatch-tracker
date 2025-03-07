@@ -25,13 +25,13 @@ app.use(
 );
  
 
-app.use('/users/:userId/catches', require('./controllers/goodCatch')); // Add this line
+
 
  
 app.use("/goodCatch", isSignedin, goodCatchController); // Corrected line, lowercase "i"
 
 const authController = require("./controllers/auth.js");
-
+app.use(passUserToView);
 
 const {
     companySites,
@@ -82,7 +82,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/auth", authController);
-app.use(passUserToView);
+app.use('/users/:userId/catches', require('./controllers/goodCatch')); // Add this line
 app.use("/goodCatch", isSignedin, goodCatchController); // Corrected line, lowercase "i"
 
 app.listen(port, () => {

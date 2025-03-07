@@ -15,4 +15,4 @@ const catchLocationSchema = new mongoose.Schema({
 
 const GoodCatch = mongoose.model("GoodCatch", catchLocationSchema); // Use catchLocationSchema here
 
-module.exports = GoodCatch;
+module.exports = GoodCatch;                                    

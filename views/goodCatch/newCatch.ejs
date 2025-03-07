@@ -10,8 +10,7 @@
     <div class="background-image">
       <div class="form-container">
         <h1>Create Good Catch</h1>
-        <form method="POST" action="/users/<%= user._id %>/catches">
-
+          <form method="POST" action="/users/<%= user._id %>/catches">
           <label for="site">Site:</label>
           <select id="site" name="site" required>
             <option value="" disabled selected>Please select one</option>
@@ -41,6 +40,12 @@
           <br />
           <button type="submit">Create</button>
         </form>
+        <p>You have submitted <%= totalCount %> good catches.</p>
+
+<% for (const category in categoryCounts) { %>
+  <p><%= categoryCounts[category] %> <%= category %></p>
+<% } %>
+
         <% if (successMessage && successMessage.length > 0) { %>
         <p style="color: #fbff01; font-size: 1.5em; text-align: center; margin: 10px;"><%= successMessage %></p>
         <% } %>

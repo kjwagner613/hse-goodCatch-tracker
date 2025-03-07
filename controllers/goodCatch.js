@@ -1,6 +1,11 @@
 const express = require("express");
 const router = express.Router();
 const GoodCatch = require("../models/goodCatch");
+const {
+  companySites,
+  corpDepartments,
+  eventCategories,
+} = require("../constants");
 
 // Dashboard
 router.get("/", async (req, res) => {
@@ -31,13 +36,13 @@ router.get("/", async (req, res) => {
 // New Good Catch Form
 router.get("/new", (req, res) => {
   try {
-    res.render("goodCatch/newCatch", { 
-      ssuccessMessage: "", 
+    res.render("goodCatch/new", {   // was "goodCatch/new"
+      successMessage: "",
       user: req.session.user,
-      companySites,     // Pass the companySites array
-      corpDepartments,  // Pass the corpDepartments array
-      eventCategories   // Pass the eventCategories array
-    });  
+      companySites, // Pass the companySites array
+      corpDepartments, // Pass the corpDepartments array
+      eventCategories, // Pass the eventCategories array
+    });
   } catch (error) {
     console.error("Error rendering new catch view:", error);
     res.status(500).send("An error occurred while displaying the new form.");
@@ -46,6 +51,7 @@ router.get("/new", (req, res) => {
 
 // Submit a New Good Catch
 router.post("/", async (req, res) => {
+  console.log()
   try {
     const newGoodCatch = new GoodCatch({
       site: req.body.site,
